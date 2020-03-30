@@ -1,6 +1,7 @@
 // Imports
 import { KeyActions } from './helpers/HelperFunctions';
 import { Asteroid } from './Asteroid';
+import { CONSTANTS } from './constants/GameConstants';
 
 /**
  * Game class
@@ -19,13 +20,15 @@ class Game {
 
     // Add keyboard event listeners
     createEventListeners() {
+        console.info( 'creating event listeners' );
+
         document.addEventListener("keyDown", KeyActions.KeyDown);
         document.addEventListener("keyUp", KeyActions.KeyUp);
     }
 
     // Start the game
     startGame() {
-        setInterval( update, 1000 / FPS );
+        setInterval( this.update, 1000 / CONSTANTS.GENERIC.FPS );
     }
 
     update() {
@@ -38,8 +41,8 @@ class Game {
 
         // Thrust the ship
         if(ship.thrusting) {
-            ship.thrust.x += SHIP_THRUST * Math.cos(ship.a) / FPS;
-            ship.thrust.y -= SHIP_THRUST * Math.sin(ship.a) / FPS;
+            ship.thrust.x += SHIP_THRUST * Math.cos(ship.a) / CONSTANTS.GENERIC.FPS;
+            ship.thrust.y -= SHIP_THRUST * Math.sin(ship.a) / CONSTANTS.GENERIC.FPS;
 
             // Draw the thruster
             if(!exploding && blinkOn) {
@@ -64,8 +67,8 @@ class Game {
                 context.stroke();
             }
         } else {
-            ship.thrust.x -= FRICTION * ship.thrust.x / FPS;
-            ship.thrust.y -= FRICTION * ship.thrust.y / FPS;
+            ship.thrust.x -= FRICTION * ship.thrust.x / CONSTANTS.GENERIC.FPS;
+            ship.thrust.y -= FRICTION * ship.thrust.y / CONSTANTS.GENERIC.FPS;
         }
         
         // Draw triangular ship
@@ -96,7 +99,7 @@ class Game {
 
                 // reduce the blink number
                 if(ship.blinkTime == 0) {
-                    ship.blinkTime = Math.ceil(SHIP_BLINK_DURATION * FPS);
+                    ship.blinkTime = Math.ceil(SHIP_BLINK_DURATION * CONSTANTS.GENERIC.FPS);
                     ship.blinkNumber--;
                 }
             }
@@ -300,7 +303,6 @@ class Game {
                 }
             }
         }
-
     }
 }
 

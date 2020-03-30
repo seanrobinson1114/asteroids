@@ -25,6 +25,8 @@ class Asteroid {
 
     // Create all asteroids
     static createAsteroidBelt = (shipX, shipY) => {
+        console.info( 'creating asteroid belt' );
+        
         let x, y;
 
         for(let i = 0; i < CONSTANTS.ASTEROID.NUMBER; ++i) {
