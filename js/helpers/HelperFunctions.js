@@ -1,3 +1,6 @@
+// Imports
+import { CONSTANTS } from '../constants/GameConstants';
+
 /**
  * Helper functions
  * @author seanmr
@@ -16,35 +19,35 @@ const CustomMath = {
 const KeyActions = {
 
     // KeyDown Actions
-    keyDown: (event) => {
+    keyDown: (event, scope) => {
         switch(event.keyCode) {
             case 32: // space bar (shoot the laser)
-                shootLaser();
+                scope.ship.shootLaser();
                 break;
             case 37: // left arrow (rotate ship left)
-                ship.rotation = TURN_SPEED / 180 * Math.PI / FPS;
+                scope.ship.rotation = CONSTANTS.SHIP.TURN_SPEED / 180 * Math.PI / CONSTANTS.GENERIC.FPS;
                 break;
             case 38: // up arrow (thrust ship forward)
-                ship.thrusting = true;
+                scope.ship.thrusting = true;
                 break;
             case 39: // right arrow (rotate ship right)
-                ship.rotation = -TURN_SPEED / 180 * Math.PI / FPS;
+                scope.ship.rotation = -CONSTANTS.SHIP.TURN_SPEED / 180 * Math.PI / CONSTANTS.GENERIC.FPS;
                 break;
         }
     },
-    keyUp: (event) => {
+    keyUp: (event, scope) => {
         switch(event.keyCode) {
             case 32: // space bar (shoot the laser)
-                ship.canShoot = true;
+                scope.ship.canShoot = true;
                 break;
             case 37: // left arrow (stop rotating ship left)
-                ship.rotation = 0;
+                scope.ship.rotation = 0;
                 break;
             case 38: // up arrow (stop thrusting ship forward)
-                ship.thrusting = false;
+                scope.ship.thrusting = false;
                 break;
             case 39: // right arrow (stop rotating ship right)
-                ship.rotation = 0;
+                scope.ship.rotation = 0;
                 break;
         }
     }

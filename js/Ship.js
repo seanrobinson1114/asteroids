@@ -1,5 +1,5 @@
 // Imports
-import { CONSTANTS } from 'constants/GameConstants';
+import { CONSTANTS } from './constants/GameConstants';
 
 /**
  * Ship
@@ -9,9 +9,11 @@ import { CONSTANTS } from 'constants/GameConstants';
 class Ship {
     
     constructor() {
+        console.info( 'creating new ship instance' );
+
         this.x = canvas.width / 2;
         this.y = canvas.height / 2;
-        this.radius = SHIP_SIZE / 2;
+        this.radius = CONSTANTS.SHIP.SHIP_SIZE / 2;
         this.angle = 90 / 180 * Math.PI, // convert angle to radians
         this.explodeTime = 0,
         this.blinkNumber = Math.ceil(CONSTANTS.SHIP.INVISIBILITY_DURATION / CONSTANTS.SHIP.BLINK_DURATION),
@@ -26,18 +28,10 @@ class Ship {
         this.lasers = []
     }
 
-    // Get the x coordinate of the ship
-    get x() {
-        return this.x;
-    }
-
-    // Get the y coordinate of the ship
-    get y() {
-        return this.y;
-    }
-
     // Explode the ship
     explodeShip() {
+        console.info( 'exploding ship' );
+
         // context.strokeStyle = "lime";
         // context.fillStyle = "lime";
         // context.beginPath();
@@ -49,6 +43,8 @@ class Ship {
 
     // Shoot the laser
     shootLaser() {
+        console.info( 'shooting laser' );
+
         if(this.canShoot && this.lasers.length < CONSTANTS.LASER.MAX_NUMBER) {
             // create laser object
             this.lasers.push({ // from the nose of the ship

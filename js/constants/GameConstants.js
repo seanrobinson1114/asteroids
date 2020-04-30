@@ -9,7 +9,7 @@ class GameConstants {
     static GENERIC = {
         FPS : 30, // frames per second
         FRICTION : 0.7, // friction coefficient of space
-        SHOW_BOUNDING : false, // show bounding boxes
+        SHOW_BOUNDING : true, // show bounding boxes
         SHOW_CENTER_DOT : false // show center dot on ship
     }
 

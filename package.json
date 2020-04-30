@@ -1,7 +1,7 @@
 {
   "name": "asteroids",
   "version": "1.0.0",
-  "description": "old school asteroids with new school flare",
+  "description": "old school asteroids",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
